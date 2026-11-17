@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Phlyn – Freelance Web Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@500;700;800&family=Hanken+Grotesk:wght@400;500;600&display=swap">
+<style>
+:root{
+  color-scheme:dark;
+  --bg:#000;--surface:#0d0a14;--line:#2a2140;
+  --text:#ece8f5;--muted:#a79fbb;
+  --violet:#8b5cf6;--lilac:#c4b5fd;--deep:#5b21b6;
+  --head:"Sora","Segoe UI",system-ui,sans-serif;
+  --body:"Hanken Grotesk","Segoe UI",system-ui,sans-serif;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 70px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--text);font:400 1.05rem/1.65 var(--body)}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--lilac);outline-offset:3px;border-radius:4px}
+.wrap{width:min(1080px,100% - 2.5rem);margin-inline:auto}
+section{padding:5.5rem 0}
+h1,h2,h3{font-family:var(--head);line-height:1.1;margin:0}
+h2{font-size:clamp(1.8rem,4vw,2.6rem);font-weight:700;letter-spacing:-.02em;margin-bottom:.8rem}
+.lead{color:var(--muted);max-width:56ch;margin:0 0 2.5rem}
+
+/* nav */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(0,0,0,.82);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:rgba(0,0,0,.82);z-index:30}
+nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font:800 1.15rem var(--head);letter-spacing:-.02em}
+.logo span{color:var(--violet)}
+nav ul{display:flex;gap:1.8rem;list-style:none;margin:0;padding:0}
+nav ul a{color:var(--muted);font-weight:500;transition:color .2s}
+nav ul a:hover{color:var(--lilac)}
+.menu{display:none;background:none;border:1px solid var(--line);color:var(--text);padding:.45rem .8rem;border-radius:8px;font:inherit;cursor:pointer}
+@media(max-width:720px){
+  html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 100px)}
+  nav{height:auto;flex-direction:column;gap:.25rem;padding:.6rem 0}
+  nav ul{gap:1rem;font-size:.9rem;flex-wrap:wrap;justify-content:center}
+}
+
+/* hero */
+.hero{padding:5rem 0 4rem;background:radial-gradient(60% 50% at 80% 10%,rgba(139,92,246,.28),transparent 70%)}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:3rem;align-items:center}
+.hero h1{font-size:clamp(2.4rem,6.5vw,4.4rem);font-weight:800;letter-spacing:-.035em}
+.hero h1 em{font-style:normal;background:linear-gradient(90deg,var(--violet),var(--lilac));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:var(--muted);max-width:46ch;margin:1.4rem 0 2rem}
+.btns{display:flex;gap:.8rem;flex-wrap:wrap}
+.btn{display:inline-block;padding:.85rem 1.5rem;border-radius:10px;font-weight:600;border:1px solid var(--violet);transition:transform .2s,background .2s}
+.btn.primary{background:var(--violet);color:#0a0612}
+.btn.primary:hover{background:var(--lilac)}
+.btn.ghost:hover{background:rgba(139,92,246,.15)}
+.btn:active{transform:scale(.97)}
+.code{background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:0 0 60px rgba(139,92,246,.22);overflow:hidden}
+.code .bar{display:flex;gap:6px;padding:.75rem 1rem;border-bottom:1px solid var(--line)}
+.code .bar i{width:10px;height:10px;border-radius:50%;background:var(--line)}
+.code .bar i:first-child{background:var(--violet)}
+.code pre{margin:0;padding:1.2rem 1.3rem;min-height:15.5rem;font:500 .92rem/1.7 ui-monospace,"Cascadia Code",Menlo,Consolas,monospace;color:var(--lilac);white-space:pre-wrap;overflow-x:auto}
+.caret{display:inline-block;width:8px;height:1em;background:var(--violet);vertical-align:-2px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+@media(max-width:860px){.hero .wrap{grid-template-columns:1fr}}
+
+.badge{display:inline-flex;align-items:center;gap:.55rem;border:1px solid var(--line);background:var(--surface);border-radius:99px;padding:.35rem .95rem;font-size:.9rem;color:var(--lilac);margin-bottom:1.3rem}
+.badge i{width:8px;height:8px;border-radius:50%;background:#22c55e;box-shadow:0 0 8px #22c55e}
+.photo{justify-self:center;width:min(100%,360px);aspect-ratio:4/5;border-radius:22px;padding:3px;background:linear-gradient(160deg,var(--lilac),var(--violet) 45%,var(--deep));box-shadow:0 0 70px rgba(139,92,246,.35)}
+.photo .frame{width:100%;height:100%;border-radius:19px;overflow:hidden;background:linear-gradient(180deg,#1a1030,#05030a);display:grid;place-items:end center}
+.photo img{width:100%;height:100%;object-fit:cover;display:block; filter: grayscale(65%);}
+.photo svg{width:78%;color:#3b2a66}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.2rem}
+.step{border-left:2px solid var(--violet);padding:.2rem 0 .2rem 1.3rem}
+.step b{font:700 1.5rem var(--head);color:var(--lilac)}
+.step h3{font-size:1.1rem;margin:.3rem 0 .4rem}
+.step p{margin:0;color:var(--muted);font-size:.98rem}
+/* about */
+.about{display:grid;grid-template-columns:1fr minmax(130px,320px);gap:3rem;align-items:center}
+.about .stats{grid-column:1/-1;grid-template-columns:repeat(4,1fr)}
+.about p{color:var(--muted);margin:0 0 1rem}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.stat{border:1px solid var(--line);background:var(--surface);border-radius:14px;padding:1.3rem}
+.stat b{display:block;font:700 1.9rem var(--head);color:var(--lilac)}
+.stat span{color:var(--muted);font-size:.95rem}
+@media(max-width:760px){.about{grid-template-columns:1fr 38%;gap:1.2rem}.about p{font-size:.95rem}.about .stats{grid-template-columns:1fr 1fr}}
+
+/* services */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.2rem}
+.card{border:1px solid var(--line);background:var(--surface);border-radius:14px;padding:1.6rem}
+.card h3{font-size:1.15rem;margin:.9rem 0 .5rem}
+.card p{margin:0;color:var(--muted);font-size:.98rem}
+.ico{width:42px;height:42px;border-radius:10px;display:grid;place-items:center;background:rgba(139,92,246,.16);color:var(--lilac)}
+.ico svg{width:22px;height:22px}
+
+/* work */
+.work{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1.4rem;}
+.proj{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--surface);transition:border-color .25s,transform .25s}
+.proj:hover{border-color:var(--violet);transform:translateY(-4px)}
+.thumb{height:170px;display:grid;place-items:center;font:800 2.2rem var(--head);color:rgba(255,255,255,.9);letter-spacing:-.03em}
+.t1{background:linear-gradient(135deg,#2e1065,#8b5cf6)}
+.t2{background:linear-gradient(135deg,#000,#5b21b6)}
+.t3{background:linear-gradient(135deg,#4c1d95,#000)}
+.proj div.info{padding:1.3rem 1.4rem 1.5rem}
+.proj h3{font-size:1.15rem}
+.proj p{color:var(--muted);margin:.4rem 0 .9rem;font-size:.97rem}
+.tags{display:flex;gap:.5rem;flex-wrap:wrap}
+.tags span,.chips span{border:1px solid var(--line);border-radius:99px;padding:.2rem .8rem;font-size:.85rem;color:var(--lilac)}
+
+/* skills */
+.chips{display:flex;flex-wrap:wrap;gap:.7rem}
+.chips span{font-size:.98rem;padding:.5rem 1.1rem;background:var(--surface)}
+
+/* contact */
+.contact{text-align:center;background:radial-gradient(55% 70% at 50% 100%,rgba(139,92,246,.25),transparent 70%)}
+.contact h2{font-size:clamp(2rem,5vw,3.2rem)}
+.contact .lead{margin-inline:auto}
+.links{display:flex;justify-content:center;gap:1.6rem;margin-top:2rem;flex-wrap:wrap;color:var(--muted)}
+.links a:hover{color:var(--lilac)}
+footer{border-top:1px solid var(--line);padding:1.6rem 0;text-align:center;color:var(--muted);font-size:.9rem}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<header>
+  <nav class="wrap" aria-label="Main">
+    <a class="logo" href="#top">Phlyn Web <span> . </span></a>
+    <ul id="links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <div class="badge"><i></i>Available for new projects</div>
+      <h1>I build fast, clean websites that <em>win customers</em>.</h1>
+      <p>Hi, I’m Phlyn Web, a freelance web developer. I design and code responsive sites for small businesses, creators and startups, from a simple landing page to a full web view.</p>
+      <div class="btns">
+        <a class="btn primary" href="#contact">Hire me</a>
+        <a class="btn ghost" href="#work">See my work</a>
+      </div>
+    </div>
+    <div class="code" aria-hidden="true">
+      <div class="bar"><i></i><i></i><i></i></div>
+      <pre id="typed"></pre>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap about">
+    <div class="about-text">
+      <h2>About me</h2>
+      <p>I’m a freelance web developer who cares about how a site looks and how well it works. I write the HTML, CSS and JavaScript myself, and I use modern AI tools to move faster without cutting quality.</p>
+      <p>You get one person from first idea to launch: clear communication, honest timelines and a site you can actually use.</p>
+    </div>
+    <div class="photo">
+      <div class="frame">
+         <img src="imgs/me.jpg" alt="Your face">
+        
+      </div>
+    </div>
+    <div class="stats">
+      <div class="stat"><b>20+</b><span>Projects delivered</span></div>
+      <div class="stat"><b>2+ yrs</b><span>Building for the web</span></div>
+      <div class="stat"><b>100%</b><span>Mobile responsive</span></div>
+      <div class="stat"><b>48 hrs</b><span>Reply time</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <h2>What I can do for you</h2>
+    <p class="lead">Pick one service or combine them. Every project includes a mobile-friendly layout and a quick walkthrough when it’s done.</p>
+    <div class="grid">
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 18v3"/></svg></div><h3>Business websites</h3><p>Landing pages and multi-page sites that explain what you offer and make it easy to contact you.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m8 8-5 4 5 4M16 8l5 4-5 4M14 5l-4 14"/></svg></div><h3>Web apps</h3><p>Tools, dashboards and systems with JavaScript, built around how your users really work.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg></div><h3>Responsive design</h3><p>Layouts that look right on phones, tablets and desktops, with fast loading.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M6 6l2 2M16 16l2 2M6 18l2-2M16 8l2-2"/></svg></div><h3>Redesign and fixes</h3><p>Already have a site? I can refresh the look, fix bugs and speed it up.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="process">
+  <div class="wrap">
+    <h2>How we’ll work together</h2>
+    <p class="lead">A simple process so you always know what happens next.</p>
+    <div class="steps">
+      <div class="step"><b>1</b><h3>Tell me your goal</h3><p>We talk about what you need, who it’s for and when you want it live.</p></div>
+      <div class="step"><b>2</b><h3>Design and build</h3><p>I send a preview early, then build the full site with your feedback.</p></div>
+      <div class="step"><b>3</b><h3>Launch and support</h3><p>I publish the site, check it on every device and fix any issues after launch.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <h2>Selected work</h2>
+    <p class="lead"> A preview screenshots of my work from some of my clents .</p>
+    <div class="work">
+      <article class="proj"><div class="thumb t1"><img src="imgs/cafe.png " style="height: 100%; width: 100%; " loading="lazy"></div><div class="info"><h3>Café website with reservations</h3><p>A warm, mobile-first site with a menu and a one-tap booking link.</p><div class="tags"><span>HTML</span><span>CSS</span><span>JS</span></div></div></article>
+      <article class="proj"><div class="thumb t2"><img src="imgs/norvs.png " style="height: 100%; width: 100%; " loading="lazy"> </div><div class="info"><h3>Photographer portfolio</h3><p>A dark, image-first gallery that loads fast and shows the work.</p><div class="tags"><span>HTML</span><span>CSS</span></div></div></article>
+      <article class="proj"><div class="thumb t3"><img src="imgs/web.png " style="height: 100%; width: 100%; "loading="lazy"></div><div class="info"><h3>Online practice test system</h3><p>Students take generated quizzes without creating an account.</p><div class="tags"><span>JavaScript</span><span>Java</span><span>AI</span></div></div></article>
+      <article class="proj"><div class="thumb t3"><img src="imgs/water.png " style="height: 100%; width: 100%; " loading="lazy" ></div><div class="info"><h3>Water Refiling Station</h3><p>Informative innovation of new technologies integration.</p><div class="tags"><span>HTML</span><span>CSS</span><span>JS</span></div></div></article>
+      <article class="proj"><div class="thumb t3"><img src="imgs/ren.png " style="height: 100%; width: 100%; " loading="lazy" ></div><div class="info"><h3>Business</h3><p>Booking session for customers in assistance of service.</p><div class="tags"><span>HTML</span><span>CSS</span><span>JS</span></div></div></article>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <h2>Tools I work with</h2>
+    <p class="lead">A simple, reliable stack that keeps your site fast and easy to maintain.</p>
+    <div class="chips">
+      <span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>Java</span><span>Responsive design</span><span>UI design</span><span>AI-assisted development</span><span>Git and GitHub</span><span>SEO basics</span>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap">
+    <h2>Have a project in mind?</h2>
+    <p class="lead">Tell me what you need and your deadline. I’ll reply with a plan and a price.</p>
+    <div class="btns" style="justify-content:center">
+      <a class="btn primary" href="mailto:phlynweb@gmail.com">Email me</a>
+      <a class="btn ghost" href="https://www.facebook.com/profile.php?id=61577854246222" target="_blank" rel="noopener">Message on Facebook</a>
+    </div>
+    <div class="links">
+      <a href="https://github.com/phlyn06" target="_blank" rel="noopener">GitHub</a>
+      <a href="mailto:phlynweb@gmail.com" target="_blank" rel="noopener">G-Mail</a>
+      <a href="https://www.tiktok.com/@bokk662?_r=1&_t=ZS-9BU5gIN7Zi8" target="_blank" rel="noopener">TikTok</a>
+      <a href="mailto:phlynweb@gmail.com">phlynweb@gmail.com</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap">© <span id="yr">2026</span> Phlyn Web. Built with HTML, CSS and JavaScript with assistance of AI.</div></footer>
+
+<script>
+(function(){
+  document.getElementById('yr').textContent=new Date().getFullYear();
+
+  var el=document.getElementById('typed');if(!el)return;
+  var text='const freelancer = {\n  name: "Phlyn Web",\n  role: "Web developer",\n  stack: ["HTML", "CSS", "JS"],\n  available: true,\n  integration: w/ AI,\n  nickName: Puzzled,\n};\n\nfreelancer.build("your website");';
+  var caret='<span class="caret"></span>';
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){el.textContent=text;return} 
+  var i=0;
+  (function tick(){
+    el.textContent=text.slice(0,i);
+    el.insertAdjacentHTML('beforeend',caret);
+    if(i++<text.length)setTimeout(tick,45);
+  })();
+})();
+</script>
+</body>
+</html>
